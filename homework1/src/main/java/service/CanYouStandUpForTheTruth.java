@@ -1,6 +1,5 @@
 package service;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import dao.InterviewDao;
 import domain.Question;
 import domain.Result;
@@ -28,7 +27,7 @@ public class CanYouStandUpForTheTruth implements InterviewService{
         System.out.println("Привет, " + userName + "!");
         for(int i = 0; i < amountQuestions; i++) {
             Question question = dao.findQuestionByNumber(questionsNumbers.get(i));
-            System.out.println("Вопрос " + (i+1) + " " + question.getQustion());
+            System.out.println("Вопрос " + (i+1) + ": " + question.getQustion());
 
             String[] answers = question.getAnswers();
             for (int j = 0; j < answers.length; j++)
@@ -40,7 +39,7 @@ public class CanYouStandUpForTheTruth implements InterviewService{
             scores += score;
         }
 
-        Result result = dao.getResultByScore(scores * amountQuestions / questionsNumbers.size());
+        Result result = dao.getResultByScore(scores * questionsNumbers.size()  / amountQuestions);
         System.out.println("Результат: " +result.getResult() );
         System.out.println(userName + "благодарим за участие!");
     }
