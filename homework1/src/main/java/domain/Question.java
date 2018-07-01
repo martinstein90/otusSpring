@@ -16,8 +16,9 @@ public class Question {
         return question;
     }
 
-    public Set<String> getAnswers() {
-        return answers.keySet();
+    public String[] getAnswers() {
+        Set<String> setAnswers  = answers.keySet();
+        return setAnswers.toArray(new String[setAnswers.size()]);
     }
 
     public Integer getScore(String answer) {
