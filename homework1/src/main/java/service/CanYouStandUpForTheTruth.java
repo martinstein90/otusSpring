@@ -41,7 +41,7 @@ public class CanYouStandUpForTheTruth implements InterviewService{
 
         Result result = dao.getResultByScore(scores * questionsNumbers.size()  / amountQuestions);
         System.out.println("Результат: " +result.getResult() );
-        System.out.println(userName + "благодарим за участие!");
+        System.out.println(userName + ", благодарим за участие!");
     }
 
     private List<Integer> getQuestionsShuffleNumbers() {
