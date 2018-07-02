@@ -4,11 +4,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="personDao" class="ru.otus.spring01.dao.PersonDaoSimple">
+    <bean id="idDao" class="dao.InterviewFromCSVdao">
+        <constructor-arg name = "url" value = "homework1\\src\\main\\resources\\Can you stand up for the truth.csv"/>
     </bean>
 
-    <bean id="personService" class="ru.otus.spring01.service.PersonServiceImpl">
-        <constructor-arg name="dao" ref="personDao"/>
+    <bean id="idService" class="service.CanYouStandUpForTheTruth">
+        <constructor-arg name="dao" ref="idDao"/>
     </bean>
 
 </beans>
