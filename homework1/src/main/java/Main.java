@@ -8,5 +8,4 @@ public class Main {
         InterviewService service = context.getBean(CanYouStandUpForTheTruth.class);
         service.interview("Ivan", 5);
     }
-
 }
