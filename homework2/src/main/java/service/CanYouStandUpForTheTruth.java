@@ -3,6 +3,9 @@ package service;
 import dao.InterviewDao;
 import domain.Question;
 import domain.Result;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,12 +14,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class CanYouStandUpForTheTruth implements InterviewService{
 
     private final InterviewDao dao;
     private int scores = 0;
 
+    //@Autowired
+    //@Qualifier("interviewFromCSVdao")
     public CanYouStandUpForTheTruth(InterviewDao dao) {
+        System.out.println("CanYouStandUpForTheTruth(InterviewDao dao), dao: " + dao);
         this.dao = dao;
     }
 

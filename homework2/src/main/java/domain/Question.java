@@ -8,6 +8,7 @@ public class Question {
     private final Map<String, Integer> answers;
 
     public Question(String question, Map<String, Integer> answers) {
+        System.out.println("Question(String question, Map<String, Integer> answers) question" + question);
         this.question = question;
         this.answers = answers;
     }

@@ -6,6 +6,7 @@ public class Result {
     private final int upperLimitScore;
 
     public Result(String result, int lowerLimitScore, int upperLimitScore) {
+        System.out.println("Resutl(String result, int lowerLimitScore, int upperLimitScore) result: " + result);
         this.result = result;
         this.lowerLimitScore = lowerLimitScore;
         this.upperLimitScore = upperLimitScore;

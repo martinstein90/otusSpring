@@ -2,10 +2,13 @@ package dao;
 
 import domain.Question;
 import domain.Result;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.util.*;
 
+@Repository
 public class InterviewFromCSVdao implements InterviewDao {
 
     private Map<Integer, Question> questions = new HashMap<>();
@@ -15,7 +18,8 @@ public class InterviewFromCSVdao implements InterviewDao {
         "Format for question: N(!=0); Interview; answer1; score1; answer2; score2; answer3; score3; ... answerN; scoreN\n" +
         "Format for results: 0; Result1; Lower limit1; Upper limit1; Result2; Lower limit2; Upper limit2;... ResultN; Lower limitN\n";
 
-    public InterviewFromCSVdao(String url) {
+    public InterviewFromCSVdao(@Value("${url}")String url) {
+        System.out.println("InterviewFromCSVdao(String url), url: " + url);
         try {
             load(url);
         } catch (IOException e) {
@@ -24,7 +28,7 @@ public class InterviewFromCSVdao implements InterviewDao {
         }
     }
 
-    public  void load(String url) throws IOException {
+    private void load(String url) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(new File(url)));
         String line = reader.readLine();
         while(line !=null) {
