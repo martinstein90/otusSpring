@@ -1,7 +1,7 @@
-package dao;
+package com.martin.dao;
 
-import domain.Question;
-import domain.Result;
+import com.martin.domain.Question;
+import com.martin.domain.Result;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +18,10 @@ public class InterviewFromCSVdao implements InterviewDao {
         "Format for question: N(!=0); Interview; answer1; score1; answer2; score2; answer3; score3; ... answerN; scoreN\n" +
         "Format for results: 0; Result1; Lower limit1; Upper limit1; Result2; Lower limit2; Upper limit2;... ResultN; Lower limitN\n";
 
-    public InterviewFromCSVdao(@Value("${url}")String url) {
-        System.out.println("InterviewFromCSVdao(String url), url: " + url);
+    public InterviewFromCSVdao(@Value("#{ systemProperties['user.region'] }") String defaultLocale,  @Value("${url}")String url) {
+
+        System.out.println("defaultLocale " + defaultLocale);
+
         try {
             load(url);
         } catch (IOException e) {

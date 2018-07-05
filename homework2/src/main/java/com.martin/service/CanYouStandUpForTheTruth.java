@@ -1,31 +1,43 @@
-package service;
+package com.martin.service;
 
-import dao.InterviewDao;
-import domain.Question;
-import domain.Result;
+import com.martin.dao.InterviewDao;
+import com.martin.domain.Question;
+import com.martin.domain.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class CanYouStandUpForTheTruth implements InterviewService{
 
     private final InterviewDao dao;
     private int scores = 0;
+    private final MessageSource messageSource;
 
-    //@Autowired
-    //@Qualifier("interviewFromCSVdao")
-    public CanYouStandUpForTheTruth(InterviewDao dao) {
-        System.out.println("CanYouStandUpForTheTruth(InterviewDao dao), dao: " + dao);
+    public CanYouStandUpForTheTruth(MessageSource messageSource, @Qualifier("interviewFromCSVdao")InterviewDao dao) {
+
+        System.out.println(messageSource.getMessage("hello.user", new String[]{"ivan"}, new Locale("RU")));
+        System.out.println(messageSource.getMessage("hello.world", null, new Locale("RU")));
+        System.out.println(messageSource.getMessage("hello.test", null, new Locale("RU")));
+
+        this.messageSource = messageSource;
         this.dao = dao;
     }
+
+    //@Autowired
+//    public CanYouStandUpForTheTruth(@Qualifier("otherInterviewdao")InterviewDao dao, @Value("${strTest}")String test) {
+//        System.out.println(test);
+//        this.dao = dao;
+//    }
 
     @Override
     public void interview(String userName, int amountQuestions) {

@@ -1,7 +1,7 @@
-package dao;
+package com.martin.dao;
 
-import domain.Question;
-import domain.Result;
+import com.martin.domain.Question;
+import com.martin.domain.Result;
 import org.junit.Assert;
 import org.junit.Test;
 
