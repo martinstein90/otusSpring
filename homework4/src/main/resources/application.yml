@@ -1,0 +1,5 @@
+#MySuperComment
+
+application:
+  use-english-local: true
+  test: true
